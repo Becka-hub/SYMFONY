@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ controller_name }}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Bienvenue dans mon Produit</h1>
+	<div class="row">
+		{% for data in data %}
+			<div class="col-md-4 mt-3">
+				<div class="card">
+					<h3 class="text-center">{{ data.title }}</h3>
+					<h6 class="text-center">{{ data.price }} Ar</h6>
+					<a class="btn btn-sm btn-success" href="{{ path('cart_add',{'id':data.id}) }}">Ajouter au panier</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

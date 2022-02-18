@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ controller_name }}
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<h1 class="text-center my-3">Selects Dynamiques</h1>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit" class=" btn-sm btn btn-success w-100" formnovalidate>Send</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+{% endblock %}

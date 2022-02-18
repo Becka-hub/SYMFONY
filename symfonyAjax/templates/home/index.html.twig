@@ -1,0 +1,447 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{asset('libs/css/dashboard.css')}}">
+{% endblock %}
+{% block body %}
+	<!-- WRAPPER -->
+	<div
+		class="WRAPPER">
+		<!-- SIDEBAR -->
+		<div class="SIDEBAR">
+			<div class="bg_shadow"></div>
+
+			<div class="sidebar_inner">
+				<div class="sidebar_close d-flex justify-content-end">
+					<div class="closse">
+						<i class="fa fa-times"></i>
+					</div>
+				</div>
+				<div class="sidebar_logo">
+					<img src="{{asset('image/logo.png')}}" alt=""/>
+				</div>
+				<ul class="sidebar_menu">
+					<li class="active">
+						<a href="#" id="open_profile">
+							<div class="icon">
+								<i class="fa fa-home" aria-hidden="true"></i>
+							</div>
+							<div class="title">Dashboard</div>
+						</a>
+					</li>
+					<li>
+						<a href="#" id="open_categorie">
+							<div class="icon">
+								<i class="fa fa-cube" aria-hidden="true"></i>
+							</div>
+							<div class="title">Categories</div>
+						</a>
+					</li>
+					<li>
+						<a href="#" id="open_produit">
+							<div class="icon">
+								<i class="fa fa-cubes" aria-hidden="true"></i>
+							</div>
+							<div class="title">Produits</div>
+						</a>
+					</li>
+					<li>
+						<a href="#" id="open_commande">
+							<div class="icon">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+							</div>
+							<div class="title">Commandes</div>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- FIN SIDEBAR -->
+
+		<!-- CONTENT -->
+		<div
+			class="CONTENT">
+			<!-- Navbar -->
+			<div class="navbar_content">
+				<div class="bloc_left">
+					<div class="hamburger">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</div>
+					<div class="image">
+						<img src="{{asset('image/2.jpg')}}" width="40px" alt=""/>
+						<h2 class="text-center">RAKOTONDRATSIMBA Maminiaina</h2>
+					</div>
+				</div>
+				<div class="bloc_right">
+					<div class="btn-group btn_deconnection">
+						<i class="fa fa-power-off"></i>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Fin Navbar -->
+
+			<!-- Profile -->
+			<section class="profile_blocs" id="profile_blocs">
+				<div class="profile">
+					<h1 class="text-center text-white">ADMINISTRATION</h1>
+				</div>
+			</section>
+			<!-- Fin Profile -->
+
+
+			<!-- Apropos -->
+			<section class="categorie_blocs" id="categorie_blocs">
+				<div class="categorie">
+					<div class="d-flex justify-content-end">
+						<button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#ModalAjouteCategorie">Ajouter</button>
+					</div>
+					<div class="table-responsive ajaxTable"></div>
+				</div>
+
+				<div class="modal fade" id="ModalAjouteCategorie" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalScrollableTitle">AJOUTE CATEGORIE</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form id="formAddCategory" enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Name</label>
+										<input type="text" class="form-control form-control-sm" name="categorieName" aria-describedby="emailHelp" placeholder="Enter name" required>
+
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Image</label>
+										<input type="file" class="form-control form-control-sm" name="categorieImage" placeholder="Image" required>
+									</div>
+
+									<div class="d-flex justify-content-center">
+										<img src="{{asset('image/loading.gif')}}" id='loader' style='display: none;' width="40px" alt=""/>
+									</div>
+									<div class="d-flex justify-content-center p-2">
+										<button type="submit" class="btn btn-sm btn-success">Ajouter</button>
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="ModalModifierCategorie" >
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalScrollableTitle">MODIFIER CATEGORIE</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form id="formModifierCategory" enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Name</label>
+										<input type="text" class="form-control form-control-sm" name="ModifierCategorieName" id="ModifierCategorieName" aria-describedby="emailHelp" placeholder="Enter name" required>
+
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Image</label>
+										<input type="file" class="form-control form-control-sm" name="ModifierCategorieImage" id="ModifierCategorieImage" placeholder="Image">
+									</div>
+									<input type="hidden" name="ModifierCategorieId" id="ModifierCategorieId">
+									<input type="hidden" name="ModifierCategorieNomImage" id="ModifierCategorieNomImage">
+									<div class="d-flex justify-content-center">
+										<img src="{{asset('image/loading.gif')}}" id='loaderModifier' style='display: none;' width="40px" alt=""/>
+									</div>
+									<div class="d-flex justify-content-center p-2">
+										<button type="submit" class="btn btn-sm btn-success">Modifier</button>
+									</div>
+								</form>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Fin Apropos -->
+
+			<!-- Produit -->
+			<section class="produit_blocs" id="produit_blocs">
+				<div class="produit">
+					<div class="d-flex justify-content-end">
+						<button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#ModalAjouteProduit">Ajouter</button>
+					</div>
+					<div class="table-responsive">
+						<table class="table text-white">
+							<thead class="thead-inverse">
+								<tr>
+									<th>Catégorie</th>
+									<th>Image</th>
+									<th>Produit</th>
+									<th>Prix</th>
+									<th>Détails</th>
+									<th>Afficher</th>
+									<th>Modifier</th>
+									<th>Suprimer</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td scope="row">Eléctronique</td>
+									<td><img src="{{asset('image/2.jpg')}}" width="60px" height="50px" alt=""/></td>
+									<td>Téléphone</td>
+									<td>200000Ar</td>
+									<td>Un Téléphone portable...</td>
+									<td>
+										<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ModalAfficheProduit">Voir</button>
+									</td>
+									<td>
+										<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#ModalModifierProduit">Modifier</button>
+									</td>
+									<td>
+										<button class="btn btn-sm btn-danger">Suprimer</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="modal fade" id="ModalAjouteProduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalScrollableTitle">AJOUTE PRODUIT</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="d-flex justify-content-center">
+									<button type="button" class="btn btn-sm btn-success">Ajouter</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="ModalModifierProduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalScrollableTitle">MODIFIER PRODUIT</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="d-flex justify-content-center">
+									<button type="button" class="btn btn-sm btn-success">Modifier</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- Fin Produit  -->
+
+			<!-- Commande -->
+			<section class="commande_blocs" id="commande_blocs">
+				<div class="commande"></div>
+			</section>
+
+
+		</div>
+		<!-- FIN CONTENT -->
+	</div><!-- FIN WRAPPER -->{% endblock %}
+{% block javascripts %}
+	{{ parent() }}<script>
+
+		$(document).ready(function () {
+$(".sidebar_menu li ").click(function () {
+$(".sidebar_menu li ").removeClass("active ");
+$(this).addClass("active ");
+});
+$(".hamburger ").click(function () {
+$(".WRAPPER ").addClass("active ");
+});
+$(".closse, .bg_shadow ").click(function () {
+$(".WRAPPER ").removeClass("active ");
+});
+
+
+$('#formAddCategory').on("submit", function (e) {
+e.preventDefault();
+$.ajax({
+url: "/addCategory",
+method: 'POST',
+data: new FormData(this),
+contentType: false,
+cache: false,
+processData: false,
+beforeSend: function () {
+$("#loader").show();
+},
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+},
+complete: function (data) {
+$("#loader").hide();
+$('#formAddCategory')[0].reset();
+afficheCategory();
+}
+});
+});
+
+
+afficheCategory();
+
+function afficheCategory() {
+$.ajax({
+url: "/afficheCategory",
+method: 'GET',
+success: function (data) {
+var table = '<table class="table text-white">';
+table += '<thead class="thead-inverse">';
+table += '<tr>';
+table += '<th>Catégories</th>';
+table += '<th>Image</th>';
+table += '<th>Modifier</th>';
+table += '<th>Suprimer</th>';
+table += '</tr>';
+table += '</thead>';
+table += '<tbody>';
+$.each(data, function (i, item) {
+table += '<tr>';
+table += '<td scope="row">' + item.name + '</td>';
+table += '<td><img src="uploads/category/' + item.image + '" width="100px" alt=""/></td>';
+table += '<td><button class="btn btn-sm btn-info" value="' + item.id + '" id="modifierCategory" data-toggle="modal" data-target="#ModalModifierCategorie">Modifier</button></td>';
+table += '<td><button class="btn btn-sm btn-danger" value="' + item.id + '" id="suprimerCategory">Suprimer</button></td>';
+table += '<tr>';
+});
+table += '<tbody>';
+table += '</table>';
+$('.ajaxTable').html(table);
+}
+});
+}
+
+
+$(document).on('click', '#suprimerCategory', function () {
+var id = $(this).attr('value');
+$.ajax({
+url: '/deletaCategory/' + id,
+method: 'DELETE',
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+afficheCategory();
+}
+});
+});
+
+
+$(document).on('click', '#modifierCategory', function () {
+var id = $(this).attr('value');
+$.ajax({
+url: '/onCategory/' + id,
+method: 'GET',
+success: function (data) {
+	$('#ModifierCategorieId').val(data.id);
+	$('#ModifierCategorieName').val(data.name);
+	$('#ModifierCategorieNomImage').val(data.image);
+}
+});
+})
+
+
+$('#formModifierCategory').on("submit", function (e) {
+e.preventDefault();
+$.ajax({
+url: "/modifierCategory",
+method: 'POST',
+data: new FormData(this),
+contentType: false,
+cache: false,
+processData: false,
+beforeSend: function () {
+$("#loaderModifier").show();
+},
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+},
+complete: function (data) {
+$("#loaderModifier").hide();
+$('#formModifierCategory')[0].reset();
+afficheCategory();
+}
+});
+});
+
+
+
+});
+
+
+$(document).ready(function () {
+let profile = document.getElementById("profile_blocs"),
+openProfile = document.getElementById("open_profile");
+
+openProfile.addEventListener("click", function () {
+profile.style.display = "block";
+categorie.style.display = "none";
+produit.style.display = "none";
+commande.style.display = "none";
+});
+
+let categorie = document.getElementById("categorie_blocs"),
+openCategorie = document.getElementById("open_categorie");
+
+openCategorie.addEventListener("click", function () {
+categorie.style.display = "block";
+profile.style.display = "none";
+produit.style.display = "none";
+commande.style.display = "none";
+});
+
+
+let produit = document.getElementById("produit_blocs"),
+openProduit = document.getElementById("open_produit");
+
+openProduit.addEventListener("click", function () {
+categorie.style.display = "none";
+produit.style.display = "block";
+profile.style.display = "none";
+commande.style.display = "none";
+});
+
+
+let commande = document.getElementById("commande_blocs"),
+openCommande = document.getElementById("open_commande");
+
+openCommande.addEventListener("click", function () {
+categorie.style.display = "none";
+commande.style.display = "block";
+profile.style.display = "none";
+produit.style.display = "none";
+});
+
+
+});
+	</script>
+{% endblock %}

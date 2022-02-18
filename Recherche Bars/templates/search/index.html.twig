@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	{{ form_start(form) }}
+	{{ form_end(form) }}
+
+	{% if data | length > 0 %}
+		<h4>Liste Repas = {{ data | length }}</h4>
+		{% for data in data %}
+			<h4>sakafo =
+				{{ data.title }}</h4>
+		{% endfor %}
+	{% else %}
+		<h4>Vite</h4>
+	{% endif %}
+
+{% endblock %}

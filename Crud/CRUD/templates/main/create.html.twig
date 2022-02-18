@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h3 class="mt-5 mb-5 text-center">Create Form</h3>
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="row">
+			<div class="col-md-6 offset-md-3 mt-5">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.title) }}
+					{{ form_widget(form.title,{'attr':{'class':'form-control form-control-sm'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.content) }}
+					{{ form_widget(form.content,{'attr':{'class':'form-control form-control-sm'}}) }}
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-sm btn-success">Submit</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

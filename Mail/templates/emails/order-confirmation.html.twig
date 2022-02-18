@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<style>
+		div {
+			font-family: Helvetica, sans-serif;
+		}
+		h1 {
+			font-size: 18px;
+			color: purple;
+		}
+	</style>
+	<body>
+		{% block body %}
+			<div>
+				<h1>Merci,{{email.toName}}</h1>
+				<p>Merci d'avoir gagner du temps pour le teste
+					{{order_number}}</p>
+				<p>The expected delivery date is
+					{{ devivery_date|date }}}</p>
+			</div>
+		{% endblock %}
+	</body>
+</html>
