@@ -1,0 +1,24 @@
+- Messenger Permet de faire des tâches asynchrones
+
+Si on utilise un serveur mutualiser,peut-être qu'on ne peut pas utiliser messanger
+parce qu'il va appele a un process complementaire qui doit être lancer dans un terminal
+
+=>composer require symfony/messenger
+
+Fichier a modifier:
+  
+
+1 Creer les fichier du messenger
+=> php bin/console make:message
+
+
+2 .env = choisie le transport de données 
+=>doctrine :stocker dans la base avant d'envoyer 
+
+
+3 messenger.yml
+=> async
+
+4 consumer les message:
+=>php bin/console messenger:consume async -vv
+Pour l'arrêter php bin/console messenger:stop-workers
