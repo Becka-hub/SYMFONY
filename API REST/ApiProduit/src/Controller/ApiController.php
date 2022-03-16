@@ -46,6 +46,16 @@ class ApiController extends AbstractController
         return $this->json(['status'=>true,'title'=>"Success","TotalRows"=>count($produit),'Donner'=>$produit],200);
     }
 
+    #[Route('/afficheProduitDetails/{id}', name: 'afficheProduitDetails', methods: 'GET')]
+    public function afficheProduitDetails($id,ProduitRepository $produitRepository): Response
+    {
+        $produit = $produitRepository->find($id);
+        if(!$produit){
+            return $this->json(['status'=>false,'title'=>"Error"],400);
+        }
+        return $this->json(['status'=>true,'title'=>"Success",'Donner'=>$produit],200);
+    }
+
     #[Route('/deleteProduit/{id}', name: 'deleteProduit', methods: 'DELETE')]
     public function deleteProduit($id,ProduitRepository $produitRepository,ManagerRegistry $managerRegistry): Response
     {
