@@ -1,0 +1,12 @@
+.alert-danger{
+    background-color: red!important;
+    color:white!important;
+}
+.alert-success{
+    background-color: rgb(16, 136, 0)!important;
+    color:white!important;
+}
+.alert-warning{
+    background-color: rgb(211, 155, 0)!important;
+    color:white!important;
+}

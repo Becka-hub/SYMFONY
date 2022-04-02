@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Sign Up | ' ~ parent() %}
+{% block body %}
+	<div class="d-flex justify-content-center">
+		<div class=" col-12 col-sm-4 col-md-4">
+		{% for message in app.flashes('error') %}
+		<div class="alert alert-warning my-2 d-flex justify-content-between">
+			<strong>Error!</strong>
+			{{ message }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		{% endfor %}
+			<h2 class="text-center text-danger font-weight-bold mt-3">Sign Up</h2>
+
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.name) }}
+			{{ form_row(registrationForm.last_name) }}
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="btn btn-outline-success">Register</button>
+			</div>
+
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+
+{% endblock %}

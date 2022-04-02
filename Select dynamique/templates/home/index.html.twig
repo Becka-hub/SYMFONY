@@ -9,10 +9,42 @@
 		<div class="col-md-6 mx-auto">
 			<h1 class="text-center my-3">Selects Dynamiques</h1>
 			{{ form_start(form) }}
-			{{ form_widget(form) }}
+			{{ form_row(form.name) }}
+			{{ form_row(form.age) }}
+			{{ form_row(form.country) }}
+			{{ form_row(form.city) }}
+			{{ form_row(form.message) }}
+			{{ form_row(form.availableAt) }}
 			<button type="submit" class=" btn-sm btn btn-success w-100" formnovalidate>Send</button>
 			{{ form_end(form) }}
 		</div>
 	</div>
 
+{% endblock %}
+{% block javascripts %}
+<script>
+	var $country = $('#ticket_form_country');
+	$country.change(function() {
+
+  var $form = $(this).closest('form');
+  
+  var data = {};
+  data[$country.attr('name')] = $country.val();
+
+  $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    complete: function(html) {
+      
+      $('#ticket_form_city').replaceWith(
+     
+        $(html.responseText).find('#ticket_form_city')
+      );
+      
+    }
+  });
+
+	});
+	</script>
 {% endblock %}

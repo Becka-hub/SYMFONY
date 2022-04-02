@@ -1,0 +1,295 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Employee | ' ~ parent() %}
+
+{% block body %}
+	<h2 class="text-center font-weight-bold text-danger mt-5">List Employee</h2>
+	<div class="pl-5 pr-5 pb-5 pt-2">
+		<div class="d-flex justify-content-end">
+			<button class="btn btn-sm btn-outline-success mb-2" data-toggle="modal" data-target="#ModalAjouteEmploye">Add employee</button>
+		</div>
+		<div class="table-responsive ajaxTable"></div>
+	</div>
+	<div class="modal fade" id="ModalAjouteEmploye" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-dark">
+					<h5 class="modal-title text-white" id="exampleModalScrollableTitle">Add employee</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="formAddEmploye" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Name</label>
+							<input type="text" class="form-control form-control-sm" name="name" aria-describedby="emailHelp" placeholder="Enter Name" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Last Name</label>
+							<input type="text" class="form-control form-control-sm" name="lastName" aria-describedby="emailHelp" placeholder="Enter Last Name" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email</label>
+							<input type="email" class="form-control form-control-sm" name="email" aria-describedby="emailHelp" placeholder="Enter Email" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone number</label>
+							<input type="text" class="form-control form-control-sm" name="telephone" aria-describedby="emailHelp" placeholder="Enter phone number" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Work</label>
+							<input type="text" class="form-control form-control-sm" name="profession" aria-describedby="emailHelp" placeholder="Enter work" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Country</label>
+							<input type="text" class="form-control form-control-sm" name="pays" aria-describedby="emailHelp" placeholder="Enter country" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">City</label>
+							<input type="text" class="form-control form-control-sm" name="ville" aria-describedby="emailHelp" placeholder="Enter city" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Photo</label>
+							<input type="file" class="form-control form-control-sm" name="photo" placeholder="photo" required>
+						</div>
+
+						<div class="d-flex justify-content-center">
+							<img src="{{asset('image/loading.gif')}}" id='loader' style='display: none;' width="40px" alt=""/>
+						</div>
+						<div class="d-flex justify-content-center p-2">
+							<button type="submit" class="btn btn-sm btn-outline-success">Save</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="ModalModifierEmploye">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-dark">
+					<h5 class="modal-title text-white" id="exampleModalScrollableTitle">Update employee</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="formModifierEmploye" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Name</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeName" id="ModifierEmployeName" aria-describedby="emailHelp" placeholder="Update name" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Last Name</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeLastName" id="ModifierEmployeLastName" aria-describedby="emailHelp" placeholder="Update  last name" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeEmail" id="ModifierEmployeEmail" aria-describedby="emailHelp" placeholder="Update email" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone number</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeTelephone" id="ModifierEmployeTelephone" aria-describedby="emailHelp" placeholder="Update phone number" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Work</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeProfession" id="ModifierEmployeProfession" aria-describedby="emailHelp" placeholder="Update work" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Country</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployePays" id="ModifierEmployePays" aria-describedby="emailHelp" placeholder="Update country" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">City</label>
+							<input type="text" class="form-control form-control-sm" name="ModifierEmployeVille" id="ModifierEmployeVille" aria-describedby="emailHelp" placeholder="Update city" required>
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Photo</label>
+							<input type="file" class="form-control form-control-sm" name="ModifierEmployeImage" id="ModifierEmployeImage" placeholder="Update photo">
+						</div>
+						<input type="hidden" name="ModifierEmployeId" id="ModifierEmployeId">
+						<input type="hidden" name="ModifierEmployeNomImage" id="ModifierEmployeNomImage">
+						<div class="d-flex justify-content-center">
+							<img src="{{asset('image/loading.gif')}}" id='loaderModifier' style='display: none;' width="40px" alt=""/>
+						</div>
+						<div class="d-flex justify-content-center p-2">
+							<button type="submit" class="btn btn-sm btn-outline-success">Update</button>
+						</div>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function () {
+$('#formAddEmploye').on("submit", function (e) {
+e.preventDefault();
+$.ajax({
+url: "/addEmploye",
+method: 'POST',
+data: new FormData(this),
+contentType: false,
+cache: false,
+processData: false,
+beforeSend: function () {
+$("#loader").show();
+},
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+},
+complete: function (data) {
+$("#loader").hide();
+$('#formAddEmploye')[0].reset();
+afficheEmploye();
+}
+});
+});
+
+});
+
+
+afficheEmploye();
+
+function afficheEmploye() {
+$.ajax({
+url: "/afficheEmploye",
+method: 'GET',
+success: function (data) {
+var table = '<table class="table table-bordered">';
+table += '<thead class="bg-dark text-white" align="center">';
+table += '<tr>';
+table += '<th>Photo</th>';
+table += '<th>Name</th>';
+table += '<th>Last Name</th>';
+table += '<th>Email</th>';
+table += '<th>Phone Number</th>';
+table += '<th>Work</th>';
+table += '<th>Country</th>';
+table += '<th>City</th>';
+table += '<th>Update</th>';
+table += '<th>Delete</th>';
+table += '</tr>';
+table += '</thead>';
+table += '<tbody>';
+$.each(data, function (i, item) {
+table += '<tr>';
+table += '<td><img src="uploads/' + item.photo + '" width="50px" height="30px" alt=""/></td>';
+table += '<td scope="row">' + item.name + '</td>';
+table += '<td scope="row">' + item.lastName + '</td>';
+table += '<td scope="row">' + item.email + '</td>';
+table += '<td scope="row">' + item.phone + '</td>';
+table += '<td scope="row">' + item.job + '</td>';
+table += '<td scope="row">' + item.country + '</td>';
+table += '<td scope="row">' + item.city + '</td>';
+table += '<td><button class="btn btn-sm btn-outline-success" value="' + item.id + '" id="modifierEmploye" data-toggle="modal" data-target="#ModalModifierEmploye">Update</button></td>';
+table += '<td><button class="btn btn-sm btn-outline-danger" value="' + item.id + '" id="suprimerEmploye">Delete</button></td>';
+table += '<tr>';
+});
+table += '<tbody>';
+table += '</table>';
+$('.ajaxTable').html(table);
+}
+});
+}
+
+
+$(document).on('click', '#suprimerEmploye', function () {
+var id = $(this).attr('value');
+Swal.fire({
+	title: 'Are you sur to delete?',
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonText: 'Yes, Delete!',
+	cancelButtonText: 'No, Cancel'
+}).then((result) => {
+	if (result.value) {
+$.ajax({
+url: '/deletaEmploye/' + id,
+method: 'DELETE',
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+afficheEmploye();
+}
+});
+} else if (result.dismiss === Swal.DismissReason.cancel) {
+						Swal.fire(
+							'Cancel',
+							'Deleted cancel :)',
+							'error'
+						)
+					}
+				});
+});
+
+
+
+
+$(document).on('click', '#modifierEmploye', function () {
+var id = $(this).attr('value');
+$.ajax({
+url: '/onEmploye/' + id,
+method: 'GET',
+success: function (data) {
+$('#ModifierEmployeId').val(data.id);
+$('#ModifierEmployeName').val(data.name);
+$('#ModifierEmployeLastName').val(data.lastName);
+$('#ModifierEmployeEmail').val(data.email);
+$('#ModifierEmployeTelephone').val(data.phone);
+$('#ModifierEmployeProfession').val(data.job);
+$('#ModifierEmployePays').val(data.country);
+$('#ModifierEmployeVille').val(data.city);
+$('#ModifierEmployeNomImage').val(data.photo);
+}
+});
+});
+
+
+$('#formModifierEmploye').on("submit", function (e) {
+e.preventDefault();
+$.ajax({
+url: "/modifierEmploye",
+method: 'POST',
+data: new FormData(this),
+contentType: false,
+cache: false,
+processData: false,
+beforeSend: function () {
+$("#loaderModifier").show();
+},
+success: function (data) {
+Swal.fire({title: data.success, icon: 'success'});
+},
+complete: function (data) {
+$("#loaderModifier").hide();
+$("#formModifierEmploye")[0].reset();
+afficheEmploye();
+}
+});
+});
+
+
+</script>
+{% endblock %}

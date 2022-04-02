@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ controller_name }}
+{% endblock %}
+
+{% block body %}
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <div class="row p-2">
+    <div class="col-md-3">
+      {{ form_start(formTask) }}
+      {{ form_widget(formTask) }}
+      {{ form_end(formTask) }}
+    </div>
+    <div class="col-md-3">
+    {{ form_start(formTodo,{'action': path('app_todo'), 'method': 'POST'}) }}
+    {{ form_widget(formTodo) }}
+    {{ form_end(formTodo) }}
+  </div>
+  <div class="col-md-3">
+  {{ form_start(formBlog,{'action': path('app_blog'), 'method': 'POST'}) }}
+  {{ form_widget(formBlog) }}
+  {{ form_end(formBlog) }}
+</div>
+<div class="col-md-3">
+{{ form_start(formMonde,{'action': path('app_monde'), 'method': 'POST'}) }}
+{{ form_widget(formMonde) }}
+{{ form_end(formMonde) }}
+</div>
+  </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+  $(document).ready(function(){
+   $('#monde_continent').on('change',function(){
+     var continent=$('#monde_continent').val();
+     if(continent=="AFRICAIN"){
+     $('#monde_ville').html("<option>Antananarivo</option>");
+     }else if(continent=="EUROPEIN"){
+     $('#monde_ville').html("<option>Paris</option>");
+     }else if(continent=="ASIE"){
+     $('#monde_ville').html("<option>Behijin</option>");
+     }
+   });
+  });
+</script>
+{% endblock %}

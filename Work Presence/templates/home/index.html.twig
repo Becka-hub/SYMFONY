@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title 'Home | ' ~ parent() %}
+
+{% block body %}
+	{% if app.user %}
+<h2 class="text-center text-danger font-weight-bold mt-5">Welcome to Work Presence</h2>
+<h4 class="text-center mt-4">{{  app.user.name }}</h4>
+<h4 class="text-center">{{ app.user.lastName }}</h4>
+<h4 class="text-center">{{ app.user.email }}</h4>
+{% endif %}
+
+{% endblock %}
