@@ -6,16 +6,16 @@
 	<h2 class="text-center font-weight-bold text-danger mt-5">List Employee</h2>
 	<div class="pl-5 pr-5 pb-5 pt-2">
 		<div class="d-flex justify-content-end">
-			<button class="btn btn-sm btn-outline-success mb-2" data-toggle="modal" data-target="#ModalAjouteEmploye">Add employee</button>
+			<button class="btn btn-sm btn-outline-danger mb-2" data-toggle="modal" data-target="#ModalAjouteEmploye">Add employee</button>
 		</div>
 		<div class="table-responsive ajaxTable"></div>
 	</div>
 	<div class="modal fade" id="ModalAjouteEmploye" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<div class="modal-content">
+			<div class="modal-content border-0 rounded-0">
 				<div class="modal-header bg-dark">
-					<h5 class="modal-title text-white" id="exampleModalScrollableTitle">Add employee</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title text-danger" id="exampleModalScrollableTitle">Add employee</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -65,7 +65,7 @@
 							<img src="{{asset('image/loading.gif')}}" id='loader' style='display: none;' width="40px" alt=""/>
 						</div>
 						<div class="d-flex justify-content-center p-2">
-							<button type="submit" class="btn btn-sm btn-outline-success">Save</button>
+							<button type="submit" class="btn btn-sm btn-outline-danger">Save</button>
 						</div>
 					</form>
 				</div>
@@ -77,10 +77,10 @@
 
 	<div class="modal fade" id="ModalModifierEmploye">
 		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<div class="modal-content">
+			<div class="modal-content border-0 rounded-0">
 				<div class="modal-header bg-dark">
-					<h5 class="modal-title text-white" id="exampleModalScrollableTitle">Update employee</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title text-danger" id="exampleModalScrollableTitle">Update employee</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -131,7 +131,7 @@
 							<img src="{{asset('image/loading.gif')}}" id='loaderModifier' style='display: none;' width="40px" alt=""/>
 						</div>
 						<div class="d-flex justify-content-center p-2">
-							<button type="submit" class="btn btn-sm btn-outline-success">Update</button>
+							<button type="submit" class="btn btn-sm btn-outline-danger">Update</button>
 						</div>
 					</form>
 

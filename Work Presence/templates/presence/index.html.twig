@@ -24,7 +24,7 @@
 					<button class="btn btn-dark btn-sm ml-2" data-toggle="modal" data-target="#absent">Absent</button>
 					<span class="btn btn-danger btn-sm button-absent ml-1">0</span>
 				</div>
-				<div class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ajoutePresence">Add presence</div>
+				<div class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#ajoutePresence">Add presence</div>
 			</div>
 			<div class="table-reponsive table-presence mt-3"></div>
 		</div>
@@ -33,10 +33,10 @@
 
 	<div class="modal fade" id="ajoutePresence" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<div class="modal-content">
+			<div class="modal-content border-0 rounded-0">
 				<div class="modal-header bg-dark">
-					<h5 class="modal-title text-white" id="exampleModalScrollableTitle">Add PRESENCE</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title text-danger" id="exampleModalScrollableTitle">Add PRESENCE</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="modal-footer d-flex justify-content-center">
-						<button type="submit" class="btn btn-sm btn-outline-success">Save</button>
+						<button type="submit" class="btn btn-sm btn-outline-danger">Save</button>
 					</div>
 				</form>
 			</div>
@@ -66,9 +66,9 @@
 
 	<div class="modal fade" id="absent" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-			<div class="modal-content">
+			<div class="modal-content border-0 rounded-0">
 				<div class="modal-header bg-dark d-flex justify-content-center">
-					<h5 class="text-center text-white" id="exampleModalScrollableTitle">LIST ABSENT</h5>
+					<h5 class="text-center text-danger" id="exampleModalScrollableTitle">LIST ABSENT</h5>
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive table-absent"></div>
